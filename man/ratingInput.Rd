@@ -17,6 +17,7 @@ ratingInput(inputId, label, class="rating",
  disabled=FALSE,
  readonly=FALSE,
  value=NULL,
+ includeFontAwesomeCSS=FALSE,
  includeBootstrapCSS=FALSE)
 }
 \arguments{
@@ -32,6 +33,7 @@ ratingInput(inputId, label, class="rating",
   \item{disabled}{Set the control to disabled.}
   \item{readonly}{Flag whether to display the rating input control in read-only mode.}
   \item{value}{Initial Value. Defaults to NULL.}
+  \item{includeFontAwesomeCSS}{Whether or not to load the Font Awesome CSS (font-awesome.min.css)}
   \item{includeBootstrapCSS}{Whether or not to load the Bootstrap CSS (bootstrap.min.css)}
 }
 \details{

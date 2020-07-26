@@ -15,7 +15,7 @@ ratingInput <- function(inputId, label, class="rating",
  dataFractions=1,
  disabled=FALSE,
  readonly=FALSE,
- value=NULL, includeBootstrapCSS=FALSE) {
+ value=NULL, includeFontAwesomeCSS=FALSE, includeBootstrapCSS=FALSE) {
 
  # For <input type="hidden">, no Shiny input binding exists, so users may need to write one on their own.
  # See discussion: https://groups.google.com/forum/#!topic/shiny-discuss/FU-aDoxKBNA
@@ -33,14 +33,18 @@ ratingInput <- function(inputId, label, class="rating",
  headTag <-     tags$head(
    initResourcePaths(),  
    tags$script(src = "ShinyRatingInput/bootstrap-rating-master/bootstrap-rating.js"),
-   tags$link(rel = "stylesheet", type = "text/css", href = "ShinyRatingInput/bootstrap-rating-master/bootstrap-rating.css"),
-   tags$link(rel = "stylesheet", type = "text/css", href = "ShinyRatingInput/css/font-awesome.min.css")
+   tags$link(rel = "stylesheet", type = "text/css", href = "ShinyRatingInput/bootstrap-rating-master/bootstrap-rating.css")
  )
  
 
  if (disabled) inputTag <- tagAppendAttributes(inputTag, `disabled`="disabled")
  if (readonly) inputTag <- tagAppendAttributes(inputTag, `readonly`="readonly")
  if (!is.null(value)) inputTag <- tagAppendAttributes(inputTag, `value`=value)
+ if(includeFontAwesomeCSS) {
+   headTag <- tagAppendChildren(headTag,
+                    tags$link(rel = "stylesheet", type = "text/css", href = "ShinyRatingInput/css/font-awesome.min.css")
+     )
+ }
  if(includeBootstrapCSS) {
    headTag <- tagAppendChildren(headTag,
                     tags$link(rel = "stylesheet", type = "text/css", href = "ShinyRatingInput/css/bootstrap.min.css")
